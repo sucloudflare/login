@@ -38,4 +38,4 @@ Sinta-se à vontade para explorar e adaptar o código conforme necessário para 
 
 ![img](./a1.png)
 <h2>img 2</h2>
-![im2](./a2.png)
+<img src='./a2.png'>
