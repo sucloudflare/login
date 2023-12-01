@@ -57,8 +57,9 @@
       }
 
       /* Estilo dos rótulos dos campos de entrada */
-      .login .box input:focus ~ label,
-      .login .box input:valid ~ label {
+      /* Estilo do rótulo quando o campo de entrada está focado ou válido */
+      .login .box input:focus + label,
+      .login .box input:valid + label {
         top: -20px;
         left: 0;
         color: aquamarine; /* Cor do rótulo quando focado ou válido */
@@ -78,43 +79,53 @@
         transition: 0.5s; /* Transição suave */
         margin-top: 40px;
         letter-spacing: 4px;
+        background-color: transparent; /* Cor de fundo transparente */
+        border: none; /* Sem borda */
+        cursor: pointer; /* Mudança do cursor para sinalizar que é um link */
       }
 
       /* Estilo do link ao passar o mouse sobre ele */
-      .login a:hover {
-        background: #1919f1; /* Cor de fundo azul escuro */
+      .login form a:hover {
+        background: #194bf1; /* Cor de fundo azul escuro */
         border-radius: 5px;
         color: white; /* Cor do texto */
-        box-shadow: 0 0 5px blue, 0 0 25px blue, 0 0 50px blue, 0 0 10px;
+        box-shadow: 0 0 5px blue, 0 0 25px blue, 0 0 50px blue, 0 0 100px blue;
       }
 
-      /* Estilo dos spans animados dentro do link */
+      .login form a:focus {
+        outline: none; /* Remover a linha ao redor do link ao focar nele */
+      }
+
+      .login form a:active {
+        transform: translateY(
+          1px
+        ); /* Deslocamento de 1 pixel para baixo quando o link é clicado */
+      }
       .login a span {
         position: absolute;
         display: block;
       }
 
-      .login span:nth-child(1) {
+      .login a span:nth-child(1) {
         top: 0;
         left: -100px;
         width: 100px;
         height: 2px;
         background: linear-gradient(180deg);
+        animation: btn-anim1 1s linear infinite;
+      }
+
+      .login form a span:nth-child(2) {
+        top: -100%;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(180deg);
         animation: btn-anim2 1s linear infinite;
-        animation-delay: 25s;
+        animation-delay: 0.25s;
       }
 
-      @keyframes btn-anim2 {
-        0% {
-          top: -100%;
-        }
-        50%,
-        100% {
-          top: 100%;
-        }
-      }
-
-      .login a span:nth-child(3) {
+      .login form a span:nth-child(3) {
         bottom: 0;
         right: -100%;
         width: 100%;
@@ -124,17 +135,7 @@
         animation-delay: 0.5s;
       }
 
-      @keyframes btn-anim3 {
-        0% {
-          right: -100%;
-        }
-        50%,
-        100% {
-          right: 100%;
-        }
-      }
-
-      .login a span:nth-child(4) {
+      .login form a span:nth-child(4) {
         bottom: -100%;
         left: 0;
         width: 2px;
@@ -144,11 +145,41 @@
         animation-delay: 0.75s;
       }
 
+      @keyframes btn-anim1 {
+        0% {
+          left: -100%;
+        }
+        25%,
+        100% {
+          left: 100%;
+        }
+      }
+
+      @keyframes btn-anim2 {
+        0% {
+          top: -100%;
+        }
+        25%,
+        100% {
+          top: 100%;
+        }
+      }
+
+      @keyframes btn-anim3 {
+        0% {
+          right: -100%;
+        }
+        25%,
+        100% {
+          right: 100%;
+        }
+      }
+
       @keyframes btn-anim4 {
         0% {
           bottom: -100%;
         }
-        50%,
+        25%,
         100% {
           bottom: 100%;
         }
@@ -172,7 +203,7 @@
           <input type="password" name="" required placeholder="Password" />
           <!-- Campo de entrada para a senha -->
         </div>
-        <a href="a">
+        <a href="#">
           <!-- Link "Enviar" -->
           <span></span>
           <!-- Span 1 -->
